@@ -1,0 +1,761 @@
+/* =====================================
+   RESET Y CONFIGURACIÓN AVANZADA
+   ===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Sistema de colores avanzado */
+    --color-primary: #4361ee;
+    --color-primary-dark: #3a56d4;
+    --color-primary-light: #4895ef;
+    --color-secondary: #7209b7;
+    --color-accent: #f72585;
+    --color-success: #4cc9f0;
+    --color-danger: #f94144;
+    --color-warning: #f8961e;
+    
+    /* Paleta de grises moderna */
+    --color-text: #1a1a2e;
+    --color-text-light: #6c757d;
+    --color-bg: #ffffff;
+    --color-bg-secondary: #f8f9fa;
+    --color-bg-card: linear-gradient(145deg, #ffffff, #f8f9fa);
+    --color-border: rgba(67, 97, 238, 0.1);
+    --color-border-hover: rgba(67, 97, 238, 0.3);
+    
+    /* Sistema de espaciado modular */
+    --spacing-unit: 0.25rem;
+    --spacing-xs: calc(var(--spacing-unit) * 2);  /* 0.5rem */
+    --spacing-sm: calc(var(--spacing-unit) * 4);  /* 1rem */
+    --spacing-md: calc(var(--spacing-unit) * 6);  /* 1.5rem */
+    --spacing-lg: calc(var(--spacing-unit) * 8);  /* 2rem */
+    --spacing-xl: calc(var(--spacing-unit) * 12); /* 3rem */
+    --spacing-xxl: calc(var(--spacing-unit) * 16); /* 4rem */
+    
+    /* Sistema de sombras avanzado */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+    
+    /* Sistema de bordes */
+    --border-radius-sm: 0.375rem;
+    --border-radius-md: 0.75rem;
+    --border-radius-lg: 1rem;
+    --border-radius-xl: 1.5rem;
+    --border-radius-2xl: 2rem;
+    
+    /* Sistema de transiciones */
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Efectos especiales */
+    --backdrop-blur: blur(8px);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.7;
+    color: var(--color-text);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: var(--spacing-xxl) 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* =====================================
+   HEADER AVANZADO
+   ===================================== */
+
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-xxl);
+    position: relative;
+    padding: var(--spacing-xl) 0;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.025em;
+    position: relative;
+    display: inline-block;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    border-radius: 2px;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-xl);
+    font-weight: 400;
+}
+
+/* =====================================
+   GRID DE CARDS MEJORADO
+   ===================================== */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px; /* ⭐ MARGIN: Espacio entre cards aumentado */
+    margin-bottom: var(--spacing-xxl);
+    padding: var(--spacing-md);
+}
+
+/* =====================================
+   CARD COMPONENT - DISEÑO AVANZADO
+   ===================================== */
+
+.card {
+    /* ⭐ BOX-SIZING: Border-box para control total */
+    box-sizing: border-box;
+    
+    /* ⭐ WIDTH: Ancho fijo de 320px */
+    width: 100%;
+    max-width: 320px;
+    min-height: 500px;
+    
+    /* ⭐ BACKGROUND: Gradiente sofisticado */
+    background: var(--color-bg-card);
+    
+    /* ⭐ BORDER: Borde con gradiente y grosor variable */
+    border: 2px solid transparent;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    border-radius: var(--border-radius-xl);
+    
+    /* ⭐ BOX-SHADOW: Sistema de sombras múltiples */
+    box-shadow: 
+        var(--shadow-md),
+        0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+    
+    /* Transición avanzada */
+    transition: 
+        var(--transition-base),
+        background 0.3s ease,
+        transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* Layout interno */
+    display: flex;
+    flex-direction: column;
+    
+    /* Posicionamiento */
+    position: relative;
+    overflow: hidden;
+    
+    /* Para centrado */
+    justify-self: center;
+    
+    /* Efecto glassmorphism */
+    backdrop-filter: var(--backdrop-blur);
+    background: var(--glass-bg);
+}
+
+/* Borde gradiente con pseudo-elemento */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        var(--color-primary), 
+        var(--color-accent), 
+        var(--color-success));
+    border-radius: var(--border-radius-xl);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+/* Hover effects avanzados */
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Efecto de brillo en hover */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.7s ease;
+    z-index: 1;
+}
+
+.card:hover::after {
+    left: 100%;
+}
+
+/* =====================================
+   CARD IMAGE - DISEÑO AVANZADO
+   ===================================== */
+
+.card-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    margin: var(--spacing-md);
+    margin-bottom: 0;
+}
+
+.card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.3) 0%, 
+        transparent 100%);
+    z-index: 1;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 
+        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.5s ease;
+    filter: brightness(0.95) contrast(1.05);
+    will-change: transform;
+}
+
+.card:hover .card-image img {
+    transform: scale(1.15);
+    filter: brightness(1.05) contrast(1.1);
+}
+
+/* Badges mejorados */
+.badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: linear-gradient(135deg, var(--color-success), #2a9d8f);
+    color: white;
+    padding: 8px 16px;
+    border-radius: var(--border-radius-2xl);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-base);
+    border: 2px solid white;
+}
+
+.badge:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: var(--shadow-md);
+}
+
+.badge-sale {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-danger));
+}
+
+.badge-new {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+}
+
+/* =====================================
+   CARD CONTENT - PADDING AVANZADO
+   ===================================== */
+
+.card-content {
+    /* ⭐ PADDING: Sistema de padding asimétrico */
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-md);
+    
+    /* Flex para layout */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    
+    /* Espaciado interno mejorado */
+    position: relative;
+}
+
+/* Separador decorativo */
+.card-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    border-radius: var(--border-radius-sm);
+}
+
+/* Título avanzado */
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.3;
+    position: relative;
+    padding-bottom: var(--spacing-xs);
+}
+
+.card-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 1px;
+    transition: width var(--transition-base);
+}
+
+.card:hover .card-title::after {
+    width: 80px;
+}
+
+/* Precios avanzados */
+.card-price {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+    padding: var(--spacing-sm) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.price-current {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.025em;
+}
+
+.price-old {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    text-decoration: line-through;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* Descripción mejorada */
+.card-description {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: var(--spacing-sm) 0;
+    flex: 1;
+    padding: 0 var(--spacing-xs);
+}
+
+/* =====================================
+   CARD FOOTER - DISEÑO AVANZADO
+   ===================================== */
+
+.card-footer {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+}
+
+/* Botones avanzados */
+.btn {
+    /* ⭐ PADDING: Padding asimétrico */
+    padding: 14px 24px;
+    
+    /* ⭐ BORDER: Bordes con gradiente */
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-lg);
+    
+    /* Tipografía avanzada */
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    
+    /* Transiciones múltiples */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Layout */
+    flex: 1;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Efecto de onda en botones */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Botón primario avanzado */
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    box-shadow: 
+        0 4px 15px rgba(67, 97, 238, 0.3),
+        var(--shadow-inner);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 25px rgba(67, 97, 238, 0.4),
+        var(--shadow-inner);
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+}
+
+/* Botón secundario avanzado */
+.btn-secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(67, 97, 238, 0.1), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(67, 97, 238, 0.2);
+}
+
+.btn-secondary:hover::before {
+    left: 100%;
+}
+
+/* =====================================
+   EXPLICACIÓN DEL BOX MODEL - AVANZADO
+   ===================================== */
+
+.box-model-explanation {
+    background: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-xl);
+    box-shadow: var(--shadow-lg);
+    margin-top: var(--spacing-xxl);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.box-model-explanation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--color-primary), 
+        var(--color-accent), 
+        var(--color-success));
+}
+
+.box-model-explanation h2 {
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xl);
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.explanation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.explanation-item {
+    /* ⭐ BOX MODEL DEMOSTRADO CON ESTILOS AVANZADOS */
+    padding: var(--spacing-lg);
+    border: 2px solid;
+    border-image: linear-gradient(45deg, var(--color-primary), var(--color-accent)) 1;
+    border-radius: var(--border-radius-lg);
+    background: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.explanation-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(67, 97, 238, 0.05), 
+        rgba(247, 37, 133, 0.05));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.explanation-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.explanation-item:hover::before {
+    opacity: 1;
+}
+
+.explanation-item h3 {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.explanation-item h3::before {
+    content: '✓';
+    width: 24px;
+    height: 24px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+}
+
+.explanation-item p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN AVANZADO
+   ===================================== */
+
+@media (max-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.25rem;
+    }
+    
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0;
+    }
+    
+    .card {
+        max-width: 100%;
+        min-height: auto;
+    }
+    
+    .card-footer {
+        flex-direction: column;
+    }
+    
+    .explanation-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .box-model-explanation {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-unit: 0.2rem;
+    }
+    
+    .page-title {
+        font-size: 1.75rem;
+    }
+    
+    .card-content {
+        padding: var(--spacing-md);
+    }
+    
+    .btn {
+        padding: 12px 20px;
+    }
+}
+
+/* =====================================
+   ANIMACIONES Y EFECTOS ESPECIALES
+   ===================================== */
+
+/* Animación de entrada para cards */
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card {
+    animation: cardEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Delay para cada card */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Efecto de partículas (opcional) */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* =====================================
+   UTILIDADES
+   ===================================== */
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hover-lift {
+    transition: transform var(--transition-base);
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+}
